@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SWF の画像置き換え &mdash; Tomato v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Tomato v0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="アニメーションの置き換え" href="processor.html" />
+    <link rel="prev" title="SWF から画像抽出" href="image_dumper.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="processor.html" title="アニメーションの置き換え"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="image_dumper.html" title="SWF から画像抽出"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="../index.html">Tomato v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="swf">
+<h1>SWF の画像置き換え<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>置き換えを行う<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Tomato は同じ形式（画像フォーマット, 縦横サイズ）の画像を置き換えることができます。</p>
+<p><tt class="docutils literal"><span class="pre">tomato/sample/bitmap/bitmap.swf</span></tt> 内の画像を置き換えてみましょう。</p>
+<embed src="../swf/bitmap.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /><p><tt class="docutils literal"><span class="pre">tomato/sample/bitmap/</span></tt> 内のディレクトリに以下の青いキノコの画像がありますので、
+これを用いて置き換えを行います。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="5%" />
+<col width="39%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">抽出画像</th>
+<th class="head">ID</th>
+<th class="head">置き換える画像</th>
+<th class="head">置き換える画像ファイル名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><img alt="../_images/bitmap_7.jpg" class="first last" src="../_images/bitmap_7.jpg" />
+</td>
+<td>7</td>
+<td><img alt="../_images/kinoko_blue2.jpg" class="first last" src="../_images/kinoko_blue2.jpg" />
+</td>
+<td>kinoko_blue.jpg</td>
+</tr>
+<tr><td><img alt="../_images/bitmap_8.png" class="first last" src="../_images/bitmap_8.png" />
+</td>
+<td>8</td>
+<td><img alt="../_images/kinoko_blue2.png" class="first last" src="../_images/kinoko_blue2.png" />
+</td>
+<td>kinoko_blue.png</td>
+</tr>
+<tr><td><img alt="../_images/bitmap_4.png" class="first last" src="../_images/bitmap_4.png" />
+</td>
+<td>4</td>
+<td><img alt="../_images/kinoko_blue_alpha2.png" class="first last" src="../_images/kinoko_blue_alpha2.png" />
+</td>
+<td>kinoko_blue_alpha.png</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>ソース<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">SwfImage</span>
+
+<span class="n">replace_images</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">replace_images</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/bitmap/kinoko_blue.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">replace_images</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/bitmap/kinoko_blue.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">replace_images</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/bitmap/kinoko_blue_alpha.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">swf</span> <span class="o">=</span> <span class="n">SwfImage</span><span class="p">(</span><span class="n">swf</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/bitmap/bitmap.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">swf</span><span class="o">.</span><span class="n">replace_images</span><span class="p">(</span><span class="n">replace_images</span><span class="p">)</span>
+<span class="n">swf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/bitmap/out.swf&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">SwfImage</span></tt> オブジェクトを用いて、SWF ファイルの画像置き換えを行います。
+置き換えたい画像の ID と画像ファイルの辞書を作成し、 <tt class="docutils literal"><span class="pre">swf.replace_images</span></tt> 関数
+を用いて画像の置き換えを行います。</p>
+<p>最終的に <tt class="docutils literal"><span class="pre">swf.write()</span></tt> 関数で画像が置き換わった SWF を出力します。</p>
+</div>
+<div class="section" id="id3">
+<h2>結果<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<embed src="../swf/bitmap_out.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SWF の画像置き換え</a><ul>
+<li><a class="reference internal" href="#id1">置き換えを行う</a></li>
+<li><a class="reference internal" href="#id2">ソース</a></li>
+<li><a class="reference internal" href="#id3">結果</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="image_dumper.html"
+                        title="前の章へ">SWF から画像抽出</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="processor.html"
+                        title="次の章へ">アニメーションの置き換え</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/function/image_replacer.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="processor.html" title="アニメーションの置き換え"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="image_dumper.html" title="SWF から画像抽出"
+             >前へ</a> |</li>
+        <li><a href="../index.html">Tomato v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Takahiro Kamatani.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+    </div>
+  </body>
+</html>

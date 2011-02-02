@@ -1,0 +1,13 @@
+*.pyc
+*.pyo
+*~
+*.orig
+*.swp
+.DS_Store
+var
+Thumbs.db
+.pydevproject
+.project
+#*
+\#*
+.#*
