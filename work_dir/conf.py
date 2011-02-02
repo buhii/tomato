@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc']
+extensions = ['sphinx.ext.autodoc', "sphinxtogithub"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -214,3 +214,10 @@ man_pages = [
     ('index', 'tomato', u'tomato Documentation',
      [u'Takahiro Kamatani'], 1)
 ]
+
+
+# -- Options for sphinx-to-github
+# See: https://github.com/michaeljones/sphinx-to-github
+sphinx_to_github = True
+sphinx_to_github_verbose = True
+
