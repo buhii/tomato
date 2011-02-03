@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="../static/translations.js"></script>
     <link rel="top" title="Tomato v0.0.1 documentation" href="../index.html" />
-    <link rel="next" title="アニメーションの置き換え" href="processor.html" />
+    <link rel="next" title="MovieClip の置き換え" href="processor.html" />
     <link rel="prev" title="SWF から画像抽出" href="image_dumper.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="processor.html" title="アニメーションの置き換え"
+          <a href="processor.html" title="MovieClip の置き換え"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="image_dumper.html" title="SWF から画像抽出"
@@ -50,22 +50,33 @@
             
   <div class="section" id="swf">
 <h1>SWF の画像置き換え<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
-<h2>置き換えを行う<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="swfimage">
+<h2>SwfImage オブジェクト<a class="headerlink" href="#swfimage" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Tomato は同じ形式（画像フォーマット, 縦横サイズ）の画像を置き換えることができます。</p>
 <p><tt class="docutils literal"><span class="pre">tomato/sample/bitmap/bitmap.swf</span></tt> 内の画像を置き換えてみましょう。</p>
 <embed src="../swf/bitmap.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /><p><tt class="docutils literal"><span class="pre">tomato/sample/bitmap/</span></tt> 内のディレクトリに以下の青いキノコの画像がありますので、
 これを用いて置き換えを行います。</p>
+<p>注意しなければならないことは、置き換え元と先の画像フォーマットは
+<strong>同一</strong> でなければならないということです。</p>
+<p>まず、画像の縦と横のサイズは同じでなければなりません。</p>
+<p>また、画像のフォーマットによって、置き換える画像の種類が変わります。
+例えば、SWF に埋め込んだ画像が <tt class="docutils literal"><span class="pre">Lossless</span></tt> 形式であれば、 <tt class="docutils literal"><span class="pre">PNG</span></tt>, <tt class="docutils literal"><span class="pre">GIF</span></tt> 形式の
+画像でしか置き換えることができません。
+<tt class="docutils literal"><span class="pre">JPEG</span></tt> 形式であれば、 <tt class="docutils literal"><span class="pre">JPEG</span></tt> 形式の画像でしか置き換えることができません。</p>
+<p>さらに、アルファ値（透明度）が設定されている画像であれば、
+置き換える画像もアルファ値が設定されたものでなければなりません。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="31%" />
-<col width="5%" />
-<col width="39%" />
-<col width="25%" />
+<col width="29%" />
+<col width="3%" />
+<col width="9%" />
+<col width="36%" />
+<col width="23%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">抽出画像</th>
+<tr><th class="head">SWF 内の画像</th>
 <th class="head">ID</th>
+<th class="head">Format</th>
 <th class="head">置き換える画像</th>
 <th class="head">置き換える画像ファイル名</th>
 </tr>
@@ -74,29 +85,32 @@
 <tr><td><img alt="../images/bitmap_7.jpg" class="first last" src="../images/bitmap_7.jpg" />
 </td>
 <td>7</td>
-<td><img alt="../images/kinoko_blue4.jpg" class="first last" src="../images/kinoko_blue4.jpg" />
+<td>JPEG</td>
+<td><img alt="../images/kinoko_blue15.jpg" class="first last" src="../images/kinoko_blue15.jpg" />
 </td>
 <td>kinoko_blue.jpg</td>
 </tr>
 <tr><td><img alt="../images/bitmap_8.png" class="first last" src="../images/bitmap_8.png" />
 </td>
 <td>8</td>
-<td><img alt="../images/kinoko_blue4.png" class="first last" src="../images/kinoko_blue4.png" />
+<td>Lossless</td>
+<td><img alt="../images/kinoko_blue15.png" class="first last" src="../images/kinoko_blue15.png" />
 </td>
 <td>kinoko_blue.png</td>
 </tr>
 <tr><td><img alt="../images/bitmap_4.png" class="first last" src="../images/bitmap_4.png" />
 </td>
 <td>4</td>
-<td><img alt="../images/kinoko_blue_alpha4.png" class="first last" src="../images/kinoko_blue_alpha4.png" />
+<td>Lossless</td>
+<td><img alt="../images/kinoko_blue_alpha15.png" class="first last" src="../images/kinoko_blue_alpha15.png" />
 </td>
 <td>kinoko_blue_alpha.png</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="id2">
-<h2>ソース<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id1">
+<h2>ソースコード<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">SwfImage</span>
 
 <span class="n">replace_images</span> <span class="o">=</span> <span class="p">{}</span>
@@ -110,13 +124,13 @@
 <span class="n">swf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/bitmap/out.swf&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">SwfImage</span></tt> オブジェクトを用いて、SWF ファイルの画像置き換えを行います。
-置き換えたい画像の ID と画像ファイルの辞書を作成し、 <tt class="docutils literal"><span class="pre">swf.replace_images</span></tt> 関数
+<p><tt class="docutils literal"><span class="pre">SwfImage</span></tt> オブジェクトを用いて、SWF ファイルの画像置き換えを行います。</p>
+<p>置き換えたい画像の ID と画像ファイルの辞書を作成し、 <tt class="docutils literal"><span class="pre">swf.replace_images</span></tt> 関数
 を用いて画像の置き換えを行います。</p>
 <p>最終的に <tt class="docutils literal"><span class="pre">swf.write()</span></tt> 関数で画像が置き換わった SWF を出力します。</p>
 </div>
-<div class="section" id="id3">
-<h2>結果<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id2">
+<h2>実行結果<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <embed src="../swf/bitmap_out.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /></div>
 </div>
 
@@ -129,9 +143,9 @@
   <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">SWF の画像置き換え</a><ul>
-<li><a class="reference internal" href="#id1">置き換えを行う</a></li>
-<li><a class="reference internal" href="#id2">ソース</a></li>
-<li><a class="reference internal" href="#id3">結果</a></li>
+<li><a class="reference internal" href="#swfimage">SwfImage オブジェクト</a></li>
+<li><a class="reference internal" href="#id1">ソースコード</a></li>
+<li><a class="reference internal" href="#id2">実行結果</a></li>
 </ul>
 </li>
 </ul>
@@ -141,7 +155,7 @@
                         title="前の章へ">SWF から画像抽出</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href="processor.html"
-                        title="次の章へ">アニメーションの置き換え</a></p>
+                        title="次の章へ">MovieClip の置き換え</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../sources/function/image_replacer.txt"
@@ -171,7 +185,7 @@
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="processor.html" title="アニメーションの置き換え"
+          <a href="processor.html" title="MovieClip の置き換え"
              >次へ</a> |</li>
         <li class="right" >
           <a href="image_dumper.html" title="SWF から画像抽出"

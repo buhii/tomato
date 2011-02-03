@@ -53,7 +53,8 @@
 <div class="section" id="swf-image-dumper-py">
 <h2>swf_image_dumper.py<a class="headerlink" href="#swf-image-dumper-py" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">tomato/swf_image_dumper.py</span></tt> を用いることで、SWF 内のビットマップ画像
-（JPEG, Lossless) を ID と共に抽出することができます。</p>
+（JPEG, Lossless) を <tt class="docutils literal"><span class="pre">CharacterID</span></tt> と共に抽出することができます。</p>
+<p><tt class="docutils literal"><span class="pre">CharacterId</span></tt> とは SWF にパブリッシュされる際に SWF 内部で定義される ID のことです。</p>
 <p>下の SWF は <tt class="docutils literal"><span class="pre">tomato/sample/bitmap/bitmap.swf</span></tt> になります。この SWF から
 ビットマップ画像を抽出してみましょう。</p>
 <embed src="../swf/bitmap.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /></div>
@@ -67,14 +68,14 @@ $ python swf_image_dumper.py sample/bitmap/bitmap.swf
 <tt class="docutils literal"><span class="pre">bitmap_4.png</span></tt>, <tt class="docutils literal"><span class="pre">bitmap_7.jpg</span></tt>, <tt class="docutils literal"><span class="pre">bitmap_8.png</span></tt> ファイルが出力されます。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="63%" />
-<col width="27%" />
-<col width="10%" />
+<col width="54%" />
+<col width="23%" />
+<col width="23%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">画像</th>
 <th class="head">ファイル名</th>
-<th class="head">ID</th>
+<th class="head">CharacterID</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -97,9 +98,8 @@ $ python swf_image_dumper.py sample/bitmap/bitmap.swf
 </table>
 <p>Lossless 形式の画像は <tt class="docutils literal"><span class="pre">.png</span></tt> ファイルに、
 JPEG 形式の画像は <tt class="docutils literal"><span class="pre">.jpg</span></tt> ファイルとして出力されます。</p>
-<p>これらの出力されたファイル名の後ろについている数字は
-SWF の内部的な ID です。</p>
-<p>Tomato はこの内部的な ID を用いて SWF 内の画像を置き換えることができます。</p>
+<p>これらの出力されたファイル名の後ろについている数字は <tt class="docutils literal"><span class="pre">CharacterID</span></tt> です。</p>
+<p>Tomato はこの <tt class="docutils literal"><span class="pre">CharacterID</span></tt> を用いて SWF 内の画像を置き換えることができます。</p>
 </div>
 </div>
 

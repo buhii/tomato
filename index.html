@@ -23,7 +23,7 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="static/translations.js"></script>
     <link rel="top" title="Tomato v0.0.1 documentation" href="#" />
-    <link rel="next" title="ソースコードのダウンロード" href="download.html" /> 
+    <link rel="next" title="Tomato の特徴" href="feature.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,7 +33,7 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="download.html" title="ソースコードのダウンロード"
+          <a href="feature.html" title="Tomato の特徴"
              accesskey="N">次へ</a> |</li>
         <li><a href="#">Tomato v0.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -46,17 +46,17 @@
             
   <div class="section" id="tomato-documentation">
 <h1>Tomato documentation<a class="headerlink" href="#tomato-documentation" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>Tomato は SWF の編集・解析を簡単に行えるよう開発された Python モジュールです。
+<p>Tomato は SWF の加工・解析を簡単に行えるよう開発された Python モジュールです。
 現在 Flash Lite 1.1 形式に対応しています。</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="feature.html">Tomato の特徴</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feature.html#swf">SWF 加工・解析ライブラリ</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">ソースコードのダウンロード</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="download.html#github">github</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download.html#id2">必要なモジュール</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="feature.html">Tomato の特徴</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="feature.html#swf">SWF 編集・解析ライブラリ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="function/image_dumper.html">SWF から画像抽出</a><ul>
@@ -65,13 +65,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="function/image_replacer.html">SWF の画像置き換え</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#id1">置き換えを行う</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#id2">ソース</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#id3">結果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#swfimage">SwfImage オブジェクト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#id1">ソースコード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#id2">実行結果</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="function/processor.html">アニメーションの置き換え</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function/processor.html#swf">Swf オブジェクト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function/processor.html">MovieClip の置き換え</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function/processor.html#tank-swf">tank.swf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/processor.html#swf-movieclip">Swf, MovieClip オブジェクトの取得</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/processor.html#id1">MovieClip の置き換え</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">MovieClip 置き換えの高速化</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html#id1">ボトルネックは？</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="function/mc_dumper.html">MovieClip の抽出</a><ul>
@@ -109,8 +115,8 @@
 </ul>
 
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="download.html"
-                        title="次の章へ">ソースコードのダウンロード</a></p>
+  <p class="topless"><a href="feature.html"
+                        title="次の章へ">Tomato の特徴</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="sources/index.txt"
@@ -140,7 +146,7 @@
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="download.html" title="ソースコードのダウンロード"
+          <a href="feature.html" title="Tomato の特徴"
              >次へ</a> |</li>
         <li><a href="#">Tomato v0.0.1 documentation</a> &raquo;</li> 
       </ul>

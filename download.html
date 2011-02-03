@@ -23,8 +23,8 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="static/translations.js"></script>
     <link rel="top" title="Tomato v0.0.1 documentation" href="index.html" />
-    <link rel="next" title="Tomato の特徴" href="feature.html" />
-    <link rel="prev" title="Tomato documentation" href="index.html" /> 
+    <link rel="next" title="SWF から画像抽出" href="function/image_dumper.html" />
+    <link rel="prev" title="Tomato の特徴" href="feature.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,10 +34,10 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="feature.html" title="Tomato の特徴"
+          <a href="function/image_dumper.html" title="SWF から画像抽出"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Tomato documentation"
+          <a href="feature.html" title="Tomato の特徴"
              accesskey="P">前へ</a> |</li>
         <li><a href="index.html">Tomato v0.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -54,24 +54,25 @@
 <h2>github<a class="headerlink" href="#github" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>github から最新の Tomato をダウンロードすることができます。</p>
 <p><a class="reference external" href="http://github.com/buhii/tomato">http://github.com/buhii/tomato</a></p>
-<p>PyPI にはまだ登録準備中です。もうしばらくお待ち下さい。</p>
+<p>PyPI には現在登録準備中です。</p>
 </div>
 <div class="section" id="id2">
 <h2>必要なモジュール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>画像抽出、画像置き換えには、PIL 1.1.7 が必要です。</p>
+<p>画像抽出、画像置き換えには、 <tt class="docutils literal"><span class="pre">PIL</span></tt> (バージョン 1.1.7 以降) が必要です。</p>
 <div class="highlight-none"><div class="highlight"><pre>$ pip install PIL
 </pre></div>
 </div>
-<p>また、MovieClip の置き換えや抽出を行う場合は bitarray, msgpack-python が必要です。</p>
+<p>また、MovieClip の置き換えや抽出を行う場合は <tt class="docutils literal"><span class="pre">bitarray</span></tt> (バージョン 0.3.5 以降) ,
+<tt class="docutils literal"><span class="pre">msgpack-python</span></tt> (バージョン 0.1.8 以降) が必要です。</p>
 <div class="highlight-none"><div class="highlight"><pre>$ pip install bitarray
 $ pip install msgpack-python==0.1.8
 </pre></div>
 </div>
 <hr class="docutils" />
 <p><tt class="docutils literal"><span class="pre">※</span> <span class="pre">今後のリリースについて</span></tt></p>
-<p>GAE では msgpack, bitarray 等のモジュールを用意することができないため、
-今後 msgpack, bitarray が無くても動作するバージョンをリリースしたいと考えています
-（ただしこれらのモジュールを用いるよりも数倍程度処理が遅くなるでしょう）。</p>
+<p>GAE では <tt class="docutils literal"><span class="pre">msgpack-python</span></tt> , <tt class="docutils literal"><span class="pre">bitarray</span></tt> 等のモジュールを用意することができないため、
+今後 <tt class="docutils literal"><span class="pre">msgpack-python</span></tt> , <tt class="docutils literal"><span class="pre">bitarray</span></tt> が無くても動作するバージョンをリリースしたいと考えています
+（ただしこれらのモジュールを用いない場合、数倍程度処理に時間が掛かるでしょう）。</p>
 </div>
 </div>
 
@@ -91,11 +92,11 @@ $ pip install msgpack-python==0.1.8
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="index.html"
-                        title="前の章へ">Tomato documentation</a></p>
-  <h4>次のトピックへ</h4>
   <p class="topless"><a href="feature.html"
-                        title="次の章へ">Tomato の特徴</a></p>
+                        title="前の章へ">Tomato の特徴</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="function/image_dumper.html"
+                        title="次の章へ">SWF から画像抽出</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="sources/download.txt"
@@ -125,10 +126,10 @@ $ pip install msgpack-python==0.1.8
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="feature.html" title="Tomato の特徴"
+          <a href="function/image_dumper.html" title="SWF から画像抽出"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Tomato documentation"
+          <a href="feature.html" title="Tomato の特徴"
              >前へ</a> |</li>
         <li><a href="index.html">Tomato v0.0.1 documentation</a> &raquo;</li> 
       </ul>

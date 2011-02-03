@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>アニメーションの置き換え &mdash; Tomato v0.0.1 documentation</title>
+    <title>MovieClip の置き換え &mdash; Tomato v0.0.1 documentation</title>
     <link rel="stylesheet" href="../static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="../static/translations.js"></script>
     <link rel="top" title="Tomato v0.0.1 documentation" href="../index.html" />
-    <link rel="next" title="MovieClip の抽出" href="mc_dumper.html" />
+    <link rel="next" title="MovieClip 置き換えの高速化" href="../optimization.html" />
     <link rel="prev" title="SWF の画像置き換え" href="image_replacer.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="mc_dumper.html" title="MovieClip の抽出"
+          <a href="../optimization.html" title="MovieClip 置き換えの高速化"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="image_replacer.html" title="SWF の画像置き換え"
@@ -48,14 +48,82 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="id1">
-<h1>アニメーションの置き換え<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="swf">
-<h2>Swf オブジェクト<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
+  <div class="section" id="movieclip">
+<h1>MovieClip の置き換え<a class="headerlink" href="#movieclip" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="tank-swf">
+<h2>tank.swf<a class="headerlink" href="#tank-swf" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Tomato では SWF 内の MovieClip オブジェクトの置き換えを
+行うことができます。</p>
+<p><tt class="docutils literal"><span class="pre">tomato/sample/mc/tank.swf</span></tt> 内の MovieClip を置き換えてみましょう。
+<tt class="docutils literal"><span class="pre">tank.swf</span></tt> は３つの MovieClip のインスタンス名
+<tt class="docutils literal"><span class="pre">kombu</span></tt> , <tt class="docutils literal"><span class="pre">fish1</span></tt> , <tt class="docutils literal"><span class="pre">fish2</span></tt> が付けられています。</p>
+<p><tt class="docutils literal"><span class="pre">fish1</span></tt> , <tt class="docutils literal"><span class="pre">fish2</span></tt> はダミーとして赤色と緑色の長方形が
+設定されています。</p>
+<embed src="../swf/tank.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" />
+<img src="../img/tank_mc_name.png" /></div>
+<div class="section" id="swf-movieclip">
+<h2>Swf, MovieClip オブジェクトの取得<a class="headerlink" href="#swf-movieclip" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>まずは Tomato で <tt class="docutils literal"><span class="pre">tank.swf</span></tt> を読み込んでみましょう。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span>
+<span class="go">&lt;tomato.swf_processor.Swf object at 0x1b19f0&gt;</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">Swf</span></tt> オブジェクトが生成されたことが分かります。</p>
+<p><tt class="docutils literal"><span class="pre">get_movie_clip_name</span></tt> 関数を用いることで、Swf 内で用いられている
+MovieClip の名前を取得することができます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">get_movie_clip_name</span><span class="p">()</span>
+<span class="go">[&#39;kombu&#39;, &#39;fish1&#39;, &#39;fish2&#39;]</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> 関数を用いることで、Swf 内の <tt class="docutils literal"><span class="pre">MovieClip</span></tt>
+オブジェクトを取得することができます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">get_movie_clip</span><span class="p">(</span><span class="s">&#39;fish1&#39;</span><span class="p">)</span>
+<span class="go">&lt;tomato.structure.MovieClip object at 0x498270&gt;</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="id1">
+<h2>MovieClip の置き換え<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Tomato では <tt class="docutils literal"><span class="pre">Swf</span></tt> オブジェクト及び <tt class="docutils literal"><span class="pre">MovieClip</span></tt> オブジェクトを
+用いて MovieClip の置き換えを行うことができます。</p>
+<p><tt class="docutils literal"><span class="pre">tank.swf</span></tt> の MovieClip である <tt class="docutils literal"><span class="pre">fish1</span></tt> を
+<tt class="docutils literal"><span class="pre">tomato/sample/mc/fish_red.swf</span></tt> 内の MovieClip である <tt class="docutils literal"><span class="pre">red</span></tt> に
+置き換えてみましょう。</p>
+<embed src="../swf/fish_red.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" />
+<img src="../img/fish_red_name.png" /><p>まずは、 <tt class="docutils literal"><span class="pre">fish_red.swf</span></tt> を読み込み、Swf オブジェクト及び MovieClip オブジェクト
+を生成します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">red_swf</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/fish_red.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">red_swf</span>
+<span class="go">&lt;tomato.swf_processor.Swf object at 0x49a570&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">red_swf</span><span class="o">.</span><span class="n">get_movie_clip_name</span><span class="p">()</span>
+<span class="go">[&#39;red&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mc_red</span> <span class="o">=</span> <span class="n">red_swf</span><span class="o">.</span><span class="n">get_movie_clip</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mc_red</span>
+<span class="go">&lt;tomato.structure.MovieClip object at 0x498250&gt;</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">replace_movie_clip</span></tt> 関数を用いて <tt class="docutils literal"><span class="pre">tank.swf</span></tt> の MovieClip を
+<tt class="docutils literal"><span class="pre">mc_red</span></tt> に置き換え、``write`` 関数を用いて出力します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">replace_movie_clip</span><span class="p">(</span><span class="s">&#39;fish1&#39;</span><span class="p">,</span> <span class="n">mc_red</span><span class="p">)</span>
+<span class="go">&lt;tomato.structure.MovieClip object at 0x498630&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/out.swf&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>出力された <tt class="docutils literal"><span class="pre">tomato/sample/mc/out.swf</span></tt> は次のようになります。</p>
+<embed src="../swf/tank_out1.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /><p><tt class="docutils literal"><span class="pre">fish2</span></tt> も <tt class="docutils literal"><span class="pre">tomato/sample/mc/fish_white.swf</span></tt> (MovieClip名: <tt class="docutils literal"><span class="pre">white</span></tt>) で
+置き換えると、次のような出力結果になります。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">white_swf</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/fish_white.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mc_white</span> <span class="o">=</span> <span class="n">white_swf</span><span class="o">.</span><span class="n">get_movie_clip</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">replace_movie_clip</span><span class="p">(</span><span class="s">&#39;fish2&#39;</span><span class="p">,</span> <span class="n">mc_white</span><span class="p">)</span>
+<span class="go">&lt;tomato.structure.MovieClip object at 0x498670&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/out2.swf&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<embed src="../swf/tank_out2.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /></div>
 </div>
 
 
@@ -66,8 +134,10 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">アニメーションの置き換え</a><ul>
-<li><a class="reference internal" href="#swf">Swf オブジェクト</a></li>
+<li><a class="reference internal" href="#">MovieClip の置き換え</a><ul>
+<li><a class="reference internal" href="#tank-swf">tank.swf</a></li>
+<li><a class="reference internal" href="#swf-movieclip">Swf, MovieClip オブジェクトの取得</a></li>
+<li><a class="reference internal" href="#id1">MovieClip の置き換え</a></li>
 </ul>
 </li>
 </ul>
@@ -76,8 +146,8 @@
   <p class="topless"><a href="image_replacer.html"
                         title="前の章へ">SWF の画像置き換え</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="mc_dumper.html"
-                        title="次の章へ">MovieClip の抽出</a></p>
+  <p class="topless"><a href="../optimization.html"
+                        title="次の章へ">MovieClip 置き換えの高速化</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../sources/function/processor.txt"
@@ -107,7 +177,7 @@
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="mc_dumper.html" title="MovieClip の抽出"
+          <a href="../optimization.html" title="MovieClip 置き換えの高速化"
              >次へ</a> |</li>
         <li class="right" >
           <a href="image_replacer.html" title="SWF の画像置き換え"

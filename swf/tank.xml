@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<swf version="4" compressed="0">
+  <Header framerate="15" frames="16">
+    <size>
+      <Rectangle left="0" right="4800" top="0" bottom="5320"/>
+    </size>
+    <tags>
+      <SetBackgroundColor>
+        <color>
+          <Color red="102" green="255" blue="255"/>
+        </color>
+      </SetBackgroundColor>
+      <DefineShape objectID="1">
+        <bounds>
+          <Rectangle left="-3148" right="-216" top="-4064" bottom="4599"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="102" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="-1671" y="-3998" fillStyle1="1"/>
+              <LineTo x="231" y="38"/>
+              <CurveTo x1="235" y1="190" x2="235" y2="290"/>
+              <CurveTo x1="470" y1="580" x2="0" y2="500"/>
+              <CurveTo x1="0" y1="260" x2="-151" y2="471"/>
+              <CurveTo x1="-41" y1="130" x2="-263" y2="724"/>
+              <CurveTo x1="-186" y1="514" x2="-51" y2="258"/>
+              <CurveTo x1="-70" y1="361" x2="122" y2="122"/>
+              <CurveTo x1="346" y1="346" x2="272" y2="512"/>
+              <CurveTo x1="342" y1="645" x2="-40" y2="497"/>
+              <CurveTo x1="-41" y1="512" x2="-411" y2="845"/>
+              <CurveTo x1="-165" y1="339" x2="-151" y2="230"/>
+              <CurveTo x1="-153" y1="233" x2="-59" y2="0"/>
+              <LineTo x="-930" y="-20"/>
+              <LineTo x="-810" y="-20"/>
+              <CurveTo x1="230" y1="-145" x2="230" y2="-329"/>
+              <CurveTo x1="460" y1="-660" x2="0" y2="-925"/>
+              <CurveTo x1="0" y1="-494" x2="-192" y2="-336"/>
+              <CurveTo x1="-122" y1="-213" x2="-291" y2="-257"/>
+              <CurveTo x1="-300" y1="-265" x2="-91" y2="-145"/>
+              <CurveTo x1="-164" y1="-264" x2="40" y2="-386"/>
+              <CurveTo x1="39" y1="-374" x2="207" y2="-458"/>
+              <LineTo x="387" y="-753"/>
+              <CurveTo x1="220" y1="-423" x2="50" y2="-248"/>
+              <CurveTo x1="68" y1="-338" x2="-171" y2="-246"/>
+              <CurveTo x1="-155" y1="-224" x2="-197" y2="-213"/>
+              <LineTo x="-273" y="-288"/>
+              <CurveTo x1="-118" y1="-130" x2="-28" y2="-90"/>
+              <CurveTo x1="-33" y1="-108" x2="64" y2="-127"/>
+              <CurveTo x1="113" y1="-225" x2="775" y2="50"/>
+              <LineTo x="521" y="57"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="2" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="1">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <PlaceObject2 replace="0" depth="1" objectID="2" name="kombu">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3692932128906250" transX="2079" transY="3662"/>
+        </transform>
+      </PlaceObject2>
+      <DefineShape objectID="3">
+        <bounds>
+          <Rectangle left="0" right="510" top="0" bottom="510"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="255" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="510" y="0" fillStyle1="1"/>
+              <LineTo x="0" y="510"/>
+              <LineTo x="-510" y="0"/>
+              <LineTo x="0" y="-510"/>
+              <LineTo x="510" y="0"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="4" frames="16">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="3">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <PlaceObject2 replace="0" depth="3" objectID="4" name="fish1">
+        <transform>
+          <Transform transX="877" transY="2347"/>
+        </transform>
+      </PlaceObject2>
+      <DefineShape objectID="5">
+        <bounds>
+          <Rectangle left="0" right="390" top="0" bottom="390"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="204" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="390" y="0" fillStyle1="1"/>
+              <LineTo x="0" y="390"/>
+              <LineTo x="-390" y="0"/>
+              <LineTo x="0" y="-390"/>
+              <LineTo x="390" y="0"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="6" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="5">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <PlaceObject2 replace="0" depth="5" objectID="6" name="fish2">
+        <transform>
+          <Transform transX="3164" transY="871"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3679504394531250" transX="2079" transY="3674"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2322"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3665924072265625" transX="2079" transY="3685"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2296"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3652343750000000" transX="2079" transY="3698"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2270"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3638763427734375" transX="2079" transY="3710"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2245"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3625335693359375" transX="2079" transY="3723"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2219"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3611755371093750" transX="2079" transY="3735"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2193"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3598175048828125" transX="2079" transY="3747"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2167"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3584594726562500" transX="2079" transY="3760"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2193"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3571166992187500" transX="2079" transY="3772"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2222"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3601531982421875" transX="2079" transY="3744"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2250"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3632049560546875" transX="2079" transY="3717"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2278"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3662567138671875" transX="2079" transY="3689"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2306"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="1">
+        <transform>
+          <Transform scaleX="0.3819885253906250" scaleY="0.3692932128906250" transX="2079" transY="3662"/>
+        </transform>
+      </PlaceObject2>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2335"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2360"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <PlaceObject2 replace="1" depth="3">
+        <transform>
+          <Transform transX="877" transY="2387"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <End/>
+    </tags>
+  </Header>
+</swf>
