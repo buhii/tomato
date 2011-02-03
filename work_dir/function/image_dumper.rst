@@ -8,7 +8,8 @@ swf_image_dumper.py
 ``tomato/swf_image_dumper.py`` を用いることで、SWF 内のビットマップ画像
 （JPEG, Lossless) を ``CharacterID`` と共に抽出することができます。
 
-``CharacterId`` とは SWF にパブリッシュされる際に SWF 内部で定義される ID のことです。
+``CharacterID`` とは SWF 内部の画像や音声、アニメーションと行ったコンテンツについて
+内部で定義された ID のことです。
 
 下の SWF は ``tomato/sample/bitmap/bitmap.swf`` になります。この SWF から
 ビットマップ画像を抽出してみましょう。
@@ -22,7 +23,7 @@ swf_image_dumper.py
 実行結果
 ------------------
 
-.. code-block:: none
+.. code-block:: sh
 
     $ cd tomato/
     $ python swf_image_dumper.py sample/bitmap/bitmap.swf

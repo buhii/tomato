@@ -1,60 +1,9 @@
-=========================
-MovieClip の置き換え
-=========================
+============
+SWF の加工
+============
 
-tank.swf
------------
-
-Tomato では SWF 内の MovieClip オブジェクトの置き換えを
-行うことができます。
-
-``tomato/sample/mc/tank.swf`` 内の MovieClip を置き換えてみましょう。
-``tank.swf`` は３つの MovieClip のインスタンス名
-``kombu`` , ``fish1`` , ``fish2`` が付けられています。
-
-``fish1`` , ``fish2`` はダミーとして赤色と緑色の長方形が
-設定されています。
-
-
-.. raw:: html
-
-    <embed src="../swf/tank.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" />
-    <img src="../img/tank_mc_name.png" />
-
-
-Swf, MovieClip オブジェクトの取得
-----------------------------------
-
-まずは Tomato で ``tank.swf`` を読み込んでみましょう。
-
-.. code-block:: python
-
-    >>> from tomato import Swf
-    >>> tank_swf = Swf(open('tomato/sample/mc/tank.swf').read())
-    >>> tank_swf
-    <tomato.swf_processor.Swf object at 0x1b19f0>
-
-``Swf`` オブジェクトが生成されたことが分かります。
-
-``get_movie_clip_name`` 関数を用いることで、Swf 内で用いられている
-MovieClip の名前を取得することができます。
-
-.. code-block:: python
-
-    >>> tank_swf.get_movie_clip_name()
-    ['kombu', 'fish1', 'fish2']
-
-``get_movie_clip`` 関数を用いることで、Swf 内の ``MovieClip``
-オブジェクトを取得することができます。
-
-.. code-block:: python
-
-    >>> tank_swf.get_movie_clip('fish1')
-    <tomato.structure.MovieClip object at 0x498270>
-
-
-MovieClip の置き換え
----------------------
+replace_movie_clip 関数
+-------------------------
 
 Tomato では ``Swf`` オブジェクト及び ``MovieClip`` オブジェクトを
 用いて MovieClip の置き換えを行うことができます。

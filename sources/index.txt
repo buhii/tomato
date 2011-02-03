@@ -6,7 +6,7 @@
 Tomato documentation
 ==================================
 
-Tomato は SWF の加工・解析を簡単に行えるよう開発された Python モジュールです。
+Tomato は SWF の加工・解析を行うために開発された Python モジュールです。
 現在 Flash Lite 1.1 形式に対応しています。
 
 
@@ -15,10 +15,11 @@ Tomato は SWF の加工・解析を簡単に行えるよう開発された Pyth
 
    feature
    download
+   function/injector
    function/image_dumper
    function/image_replacer
    function/processor
-   optimization
+   function/processor_detail
    function/mc_dumper
    thanks
 

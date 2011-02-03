@@ -1,11 +1,9 @@
-=========================
-MovieClip の置き換え
-=========================
+=============================
+SWF の MovieClip の置き換え
+=============================
 
-tank.swf
------------
 
-Tomato では SWF 内の MovieClip オブジェクトの置き換えを
+Tomato では SWF 内の MovieClip の置き換えを
 行うことができます。
 
 ``tomato/sample/mc/tank.swf`` 内の MovieClip を置き換えてみましょう。
@@ -22,7 +20,7 @@ Tomato では SWF 内の MovieClip オブジェクトの置き換えを
     <img src="../img/tank_mc_name.png" />
 
 
-Swf, MovieClip オブジェクトの取得
+Swf, MovieClip オブジェクトの生成
 ----------------------------------
 
 まずは Tomato で ``tank.swf`` を読み込んでみましょう。
@@ -53,8 +51,8 @@ MovieClip の名前を取得することができます。
     <tomato.structure.MovieClip object at 0x498270>
 
 
-MovieClip の置き換え
----------------------
+replace_movie_clip 関数
+-------------------------
 
 Tomato では ``Swf`` オブジェクト及び ``MovieClip`` オブジェクトを
 用いて MovieClip の置き換えを行うことができます。
@@ -119,3 +117,18 @@ Tomato では ``Swf`` オブジェクト及び ``MovieClip`` オブジェクト�
     <embed src="../swf/tank_out2.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" />
 
 
+置き換えの際の注意
+---------------------
+
+**ビットマップ画像が含まれる MovieClip の置き換え**
+    Tomato ではビットマップ画像が含まれる MovieClip の置き換えを
+    行うことは出来ません。
+
+**MovieClip の入れ子数の限界**
+    Flash Lite 1.1 では、MovieClip の入れ子数に限界があり、
+    置き換えを行う際は入れ子数の限界を超えないように注意しなければなりません。
+    MovieClip の入れ子数問題に関しては、こちらの記事が非常に参考になります。
+
+        **FlashLite1.1: スタック限界エラーにご注意！ | エントリー | _level0.KAYAC**
+
+        http://level0.kayac.com/2009/11/flashlite11_4.php

@@ -46,7 +46,7 @@
             
   <div class="section" id="tomato-documentation">
 <h1>Tomato documentation<a class="headerlink" href="#tomato-documentation" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>Tomato は SWF の加工・解析を簡単に行えるよう開発された Python モジュールです。
+<p>Tomato は SWF の加工・解析を行うために開発された Python モジュールです。
 現在 Flash Lite 1.1 形式に対応しています。</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -57,6 +57,11 @@
 <li class="toctree-l1"><a class="reference internal" href="download.html">ソースコードのダウンロード</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="download.html#github">github</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download.html#id2">必要なモジュール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="function/injector.html">SWF へ変数の埋め込み</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function/injector.html#id1">変数の埋め込み</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/injector.html#create-swf">create_swf 関数</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="function/image_dumper.html">SWF から画像抽出</a><ul>
@@ -70,22 +75,23 @@
 <li class="toctree-l2"><a class="reference internal" href="function/image_replacer.html#id2">実行結果</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="function/processor.html">MovieClip の置き換え</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function/processor.html#tank-swf">tank.swf</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function/processor.html#swf-movieclip">Swf, MovieClip オブジェクトの取得</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function/processor.html#id1">MovieClip の置き換え</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function/processor.html">SWF の MovieClip の置き換え</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function/processor.html#id1">Swf, MovieClip オブジェクトの生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/processor.html#replace-movie-clip">replace_movie_clip 関数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/processor.html#id2">置き換えの際の注意</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="optimization.html">MovieClip 置き換えの高速化</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html#id1">ボトルネックは？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function/processor_detail.html">SWF の加工</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function/processor_detail.html#replace-movie-clip">replace_movie_clip 関数</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="function/mc_dumper.html">MovieClip の抽出</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="function/mc_dumper.html">SWF から MovieClip の抽出</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function/mc_dumper.html#swf-mc-dumper-py">swf_mc_dumper.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function/mc_dumper.html#id1">実行結果</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="thanks.html">謝辞</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="thanks.html#tomato">Tomato の歴史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thanks.html#id2">公開の経緯</a></li>
 </ul>
 </li>
 </ul>

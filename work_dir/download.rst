@@ -35,7 +35,7 @@ PyPI には現在登録準備中です。
 
 ``※ 今後のリリースについて``
 
-GAE では ``msgpack-python`` , ``bitarray`` 等のモジュールを用意することができないため、
+Google App Engine では ``msgpack-python`` , ``bitarray`` 等のモジュールを用意することができないため、
 今後 ``msgpack-python`` , ``bitarray`` が無くても動作するバージョンをリリースしたいと考えています
 （ただしこれらのモジュールを用いない場合、数倍程度処理に時間が掛かるでしょう）。
 
