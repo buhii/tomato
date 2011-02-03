@@ -99,7 +99,7 @@ def decompress(base_swf):
         new_tail = tail
     elif header[:3] == 'CWS': # compressed
         # tail を zlib 展開
-        # See http://ne.tc/2008/03/13/
+        # See http://nakagami.blog.so-net.ne.jp/2010-02-26
         new_tail = zlib.decompress(tail)
     return header + new_tail
 
