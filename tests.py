@@ -8,10 +8,6 @@ import msgpack
 import time
 
 from PIL import Image
-try:
-    import simplejson as json
-except ImportError:
-    import json
 
 from swf_processor import Swf
 from exceptions_tomato import MovieClipDoesNotExist

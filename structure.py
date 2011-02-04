@@ -351,7 +351,7 @@ class MovieClip(object):
         self.define_sprite = define_sprite
         self.place_object2 = place_object2
 
-        self._translate = (0, 0)
+        self._translate = (0, 0)   # twips を基準に
         self._scale, self._rotate = None, None
 
         if self.place_object2:
@@ -369,29 +369,29 @@ class MovieClip(object):
                     m.getattr_value('rotate_skew0'),
                     m.getattr_value('rotate_skew1'))
 
-    def move(self, move_x, move_y):
-        self._translate = (self._translate[0] + move_x, self._translate[1] + move_y)
+    @property
+    def translate(self):
+        return map(twip2pixel, self._translate)
+    
+    def set_translate(self, translate_x, translate_y):
+        self._translate = pixel2twip(translate_x), pixel2twip(translate_y)
         self.change_matrix()
 
-    def translate(self, translate_x, translate_y):
-        self._translate = translate_x, translate_y
-        self.change_matrix()
+    @property
+    def scale(self):
+        return self._scale
 
-    def scale(self, scale_x, scale_y):
+    def set_scale(self, scale_x, scale_y):
         self._scale = scale_x, scale_y
         self.change_matrix()
 
-    def rotate(self, rotate_skew0, rotate_skew1):
+    @property
+    def rotate(self):
+        return self._rotate
+    
+    def set_rotate(self, rotate_skew0, rotate_skew1):
         self._rotate = rotate_skew0, rotate_skew1
         self.change_matrix()
-
-    def change_matrix(self):
-        self.get_place_object2()
-        self.place_object2.replace_matrix(
-            MATRIX().generate(
-                   scale=self._scale, 
-                   rotate=self._rotate,
-                   translate=map(pixel2twip, self._translate)))
 
     @property
     def depth(self):
@@ -401,6 +401,14 @@ class MovieClip(object):
     def set_depth(self, num):
         self.get_place_object2()
         self.place_object2.set_depth(num)
+
+    def change_matrix(self):
+        self.get_place_object2()
+        self.place_object2.replace_matrix(
+            MATRIX().generate(
+                   scale=self._scale, 
+                   rotate=self._rotate,
+                   translate=self._translate))
 
     def get_place_object2(self):
         if not self.place_object2:
