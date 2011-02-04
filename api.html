@@ -1,0 +1,230 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tomato API &mdash; Tomato v0.0.1 documentation</title>
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/translations.js"></script>
+    <link rel="top" title="Tomato v0.0.1 documentation" href="index.html" />
+    <link rel="next" title="謝辞" href="thanks.html" />
+    <link rel="prev" title="SWF から MovieClip の抽出" href="tutorial/mc_dumper.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="thanks.html" title="謝辞"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="tutorial/mc_dumper.html" title="SWF から MovieClip の抽出"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="index.html">Tomato v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tomato-api">
+<h1>Tomato API<a class="headerlink" href="#tomato-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Tomato API を用いることで、チュートリアルで紹介した他にも
+いろいろな操作を SWF に対して行うことができるようになります。</p>
+<div class="section" id="id1">
+<h2>メソッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="swf">
+<h3>SWF の読み込み<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>SWF の画面サイズ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">size</span>
+<span class="go">(240, 266)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">width</span>
+<span class="go">240</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">height</span>
+<span class="go">266</span>
+</pre></div>
+</div>
+<p>SWF の画面サイズがピクセル単位で出力されます。</p>
+</div>
+<div class="section" id="id3">
+<h3>SWF オブジェクトのコピー<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="go">&lt;tomato.swf_processor.Swf object at 0x51e330&gt;</span>
+</pre></div>
+</div>
+<p>SWF オブジェクトの deepcopy を作成します。</p>
+<p>python の copy モジュールの deepcopy 関数よりも
+8 倍程度高速にコピーを生成することができます。</p>
+<p>Global 変数に置き換え元の SWF を宣言し、MovieClip
+の置き換えを行う際に <tt class="docutils literal"><span class="pre">copy()</span></tt> したものを用いる事で、
+SWF ファイルを読み込んでパースを行うコストを抑えることができます。</p>
+</div>
+<div class="section" id="swf-movieclip">
+<h3>SWF 内 MovieClip 名の取得<a class="headerlink" href="#swf-movieclip" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">get_movie_clip_name</span><span class="p">()</span>
+<span class="go">[&#39;kombu&#39;, &#39;fish1&#39;, &#39;fish2&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="movieclip">
+<h3>MovieClip オブジェクトの取得<a class="headerlink" href="#movieclip" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">get_movie_clip</span><span class="p">(</span><span class="s">&#39;kombu&#39;</span><span class="p">)</span>
+<span class="go">&lt;tomato.structure.MovieClip object at 0x5102d0&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>入れ子関係を用いた MovieClip の取得<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">tomato/sample/mc/fish_red_fin.swf</span></tt> は金魚の MovieClip (<tt class="docutils literal"><span class="pre">red</span></tt>)
+の内部にヒレの MovieClip (<tt class="docutils literal"><span class="pre">fin</span></tt>) があります。</p>
+<p>このように入れ子構造の MovieClip を取得したい場合は
+<tt class="docutils literal"><span class="pre">get_movie_clip_from_parent</span></tt> 関数を用います。</p>
+<embed src="swf/fish_red_hire.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" />
+<img src="img/tomato_fin.png" /><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/fish_red_fin.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">get_movie_clip_from_parent</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;fin&#39;</span><span class="p">)</span>
+<span class="go">&lt;tomato.structure.MovieClip object at 0x1b7570&gt;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><tt class="docutils literal"><span class="pre">fin</span></tt> という名前の MovieClip が一つしかない場合は <tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> 関数でも
+問題なく取得することができますが、</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">fish1</span></tt> MovieClip の中の <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip</li>
+<li><tt class="docutils literal"><span class="pre">fish2</span></tt> MovieClip の中の <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip</li>
+<li><tt class="docutils literal"><span class="pre">fish3</span></tt> MovieClip の中の <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip</li>
+<li>...</li>
+</ul>
+<p>といったような構造の場合、 <tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> 関数だと SWF の中で最初に
+発見された <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip を取得しようとしてうまくいきません。
+このような場合に <tt class="docutils literal"><span class="pre">get_movie_clip_from_parent</span></tt>
+関数を用いるとうまく処理を行うことができます。</p>
+</div>
+<div class="section" id="id5">
+<h3>画面から MovieClip の削除<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>MovieClip の置き換え<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3>MovieClip のサイズ変更<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3>MovieClip のレイヤー深度の変更<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3>MovieClip の位置変更<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>SWF の書き出し<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>シリアライズ機能<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tomato API</a><ul>
+<li><a class="reference internal" href="#id1">メソッド</a><ul>
+<li><a class="reference internal" href="#swf">SWF の読み込み</a></li>
+<li><a class="reference internal" href="#id2">SWF の画面サイズ</a></li>
+<li><a class="reference internal" href="#id3">SWF オブジェクトのコピー</a></li>
+<li><a class="reference internal" href="#swf-movieclip">SWF 内 MovieClip 名の取得</a></li>
+<li><a class="reference internal" href="#movieclip">MovieClip オブジェクトの取得</a></li>
+<li><a class="reference internal" href="#id4">入れ子関係を用いた MovieClip の取得</a></li>
+<li><a class="reference internal" href="#id5">画面から MovieClip の削除</a></li>
+<li><a class="reference internal" href="#id6">MovieClip の置き換え</a></li>
+<li><a class="reference internal" href="#id7">MovieClip のサイズ変更</a></li>
+<li><a class="reference internal" href="#id8">MovieClip のレイヤー深度の変更</a></li>
+<li><a class="reference internal" href="#id9">MovieClip の位置変更</a></li>
+<li><a class="reference internal" href="#id10">SWF の書き出し</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">シリアライズ機能</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="tutorial/mc_dumper.html"
+                        title="前の章へ">SWF から MovieClip の抽出</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="thanks.html"
+                        title="次の章へ">謝辞</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/api.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="thanks.html" title="謝辞"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="tutorial/mc_dumper.html" title="SWF から MovieClip の抽出"
+             >前へ</a> |</li>
+        <li><a href="index.html">Tomato v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Takahiro Kamatani.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+    </div>
+  </body>
+</html>

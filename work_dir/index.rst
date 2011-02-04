@@ -15,12 +15,8 @@ Tomato は SWF の加工・解析を行うために開発された Python モジ
 
    feature
    download
-   function/injector
-   function/image_dumper
-   function/image_replacer
-   function/processor
-   function/processor_detail
-   function/mc_dumper
+   tutorial
+   api
    thanks
 
 

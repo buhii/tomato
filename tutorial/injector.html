@@ -1,0 +1,147 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SWF へ変数の埋め込み &mdash; Tomato v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <script type="text/javascript" src="../static/translations.js"></script>
+    <link rel="top" title="Tomato v0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Tutorial" href="../tutorial.html" />
+    <link rel="next" title="SWF から画像抽出" href="image_dumper.html" />
+    <link rel="prev" title="Tutorial" href="../tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="image_dumper.html" title="SWF から画像抽出"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="../tutorial.html" title="Tutorial"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="../index.html">Tomato v0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" accesskey="U">Tutorial</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="swf">
+<h1>SWF へ変数の埋め込み<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>変数の埋め込み<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Tomato では SWF へ変数を注入することができます。</p>
+<p><tt class="docutils literal"><span class="pre">※パラメータ注入を行う場合、SWF</span> <span class="pre">パブリッシュ設定の「XMPメタデータを含める」</span>
+<span class="pre">オプションは無効にして下さい。</span></tt></p>
+<p>ここでは、 <tt class="docutils literal"><span class="pre">tomato/sample/params/params.swf</span></tt> に変数を注入してみます。</p>
+</div>
+<div class="section" id="create-swf">
+<h2>create_swf 関数<a class="headerlink" href="#create-swf" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<embed src="../swf/params.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /><p><tt class="docutils literal"><span class="pre">params.swf</span></tt> は <tt class="docutils literal"><span class="pre">a</span></tt> , <tt class="docutils literal"><span class="pre">b</span></tt> , <tt class="docutils literal"><span class="pre">c</span></tt> という変数の内容を画面上に表示します。
+直接表示した場合、 <tt class="docutils literal"><span class="pre">a</span></tt> , <tt class="docutils literal"><span class="pre">b</span></tt> , <tt class="docutils literal"><span class="pre">c</span></tt> という変数が SWF 内に存在しないので
+何も表示されません。</p>
+<p>Tomato で変数を埋め込むコードは以下になります。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">create_swf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="s">&#39;hoge&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="s">u&#39;ふが&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="s">u&#39;ぴよち&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">create_swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/params/params.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">params</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample/params/out.swf&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>埋め込みたい変数の名前と内容を辞書形式にした <tt class="docutils literal"><span class="pre">params</span></tt> を用意し
+<tt class="docutils literal"><span class="pre">create_swf</span></tt> 関数を呼び出すことで埋め込みが行われます。</p>
+<p>出力された <tt class="docutils literal"><span class="pre">out.swf</span></tt> は次のようになります。</p>
+<embed src="../swf/params_out.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" /></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SWF へ変数の埋め込み</a><ul>
+<li><a class="reference internal" href="#id1">変数の埋め込み</a></li>
+<li><a class="reference internal" href="#create-swf">create_swf 関数</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../tutorial.html"
+                        title="前の章へ">Tutorial</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="image_dumper.html"
+                        title="次の章へ">SWF から画像抽出</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/tutorial/injector.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="image_dumper.html" title="SWF から画像抽出"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="../tutorial.html" title="Tutorial"
+             >前へ</a> |</li>
+        <li><a href="../index.html">Tomato v0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" >Tutorial</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Takahiro Kamatani.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>MovieClip 入れ子数の調査 &mdash; Tomato v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <script type="text/javascript" src="../static/translations.js"></script>
+    <link rel="top" title="Tomato v0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="チュートリアル" href="../tutorial.html" />
+    <link rel="next" title="SWF から MovieClip の抽出" href="mc_dumper.html" />
+    <link rel="prev" title="SWF の MovieClip の置き換え" href="mc_replacer.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="mc_dumper.html" title="SWF から MovieClip の抽出"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="mc_replacer.html" title="SWF の MovieClip の置き換え"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="../index.html">Tomato v0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" accesskey="U">チュートリアル</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="movieclip">
+<h1>MovieClip 入れ子数の調査<a class="headerlink" href="#movieclip" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="swf-checker-py">
+<h2>swf_checker.py<a class="headerlink" href="#swf-checker-py" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">tomato/swf_checker.py</span></tt> によって、SWF 内の MovieClip の入れ子数を調べることができます。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>tomato
+<span class="nv">$ </span>python swf_checker.py
+usage: python swf_checker.py <span class="o">[</span>input.swf<span class="o">]</span> <span class="o">[</span>limit_depth<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>[input.swf]</strong></dt>
+<dd>MovieClip 入れ子数を調査したい SWF を指定します。</dd>
+<dt><strong>[limit_depth]</strong></dt>
+<dd>MovieClip の入れ子数の上限を指定します。limit_depth 以上の入れ子数を
+検出するとエラーを出力します。
+指定しない場合、デフォルト値 3 が使用されます。</dd>
+</dl>
+</div>
+<div class="section" id="id1">
+<h2>実行結果<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">tomato/sample/mc/tank.swf</span></tt> の MovieClip 階層を調べてみましょう。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>python swf_checker.py sample/mc/tank.swf 1
+Error: MovieClip : ID: 2 - <span class="s2">&quot;kombu&quot;</span>                 depth 1
+Error: MovieClip : ID: 4 - <span class="s2">&quot;fish1&quot;</span>                 depth 1
+Error: MovieClip : ID: 6 - <span class="s2">&quot;fish2&quot;</span>                 depth 1
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MovieClip 入れ子数の調査</a><ul>
+<li><a class="reference internal" href="#swf-checker-py">swf_checker.py</a></li>
+<li><a class="reference internal" href="#id1">実行結果</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="mc_replacer.html"
+                        title="前の章へ">SWF の MovieClip の置き換え</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="mc_dumper.html"
+                        title="次の章へ">SWF から MovieClip の抽出</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/tutorial/mc_checker.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="mc_dumper.html" title="SWF から MovieClip の抽出"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="mc_replacer.html" title="SWF の MovieClip の置き換え"
+             >前へ</a> |</li>
+        <li><a href="../index.html">Tomato v0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../tutorial.html" >チュートリアル</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Takahiro Kamatani.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+    </div>
+  </body>
+</html>
