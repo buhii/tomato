@@ -221,7 +221,51 @@ Django 等でレスポンス返却する際に用います。</p>
 </div>
 <div class="section" id="id2">
 <h2>シリアライズ機能<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>まだ途中！</p>
+<p>Tomato の処理の中で重いものの一つが SWF ファイルのパースです。</p>
+<p>生成した Swf オブジェクトをシリアライズし利用することで、
+SWF ファイルの読み込み（パース処理）時間を削減することができます。</p>
+<div class="section" id="swf-serialize-swf-dumps">
+<h3>swf.serialize / swf.dumps<a class="headerlink" href="#swf-serialize-swf-dumps" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
+<span class="go">&#39;\x85\xb2serializer_version\xa4MCV1\xa6blocks\xdc\x007...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.p&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>SWF オブジェクトをシリアライズします。</p>
+<p>引数を指定しなければ、バイナリ列が出力されます。
+引数にファイルオブジェクトを指定すると、ファイルに書き出されます。</p>
+<p><tt class="docutils literal"><span class="pre">swf.dumps</span></tt> メソッドでも同じ処理を行うことができます。</p>
+</div>
+<div class="section" id="swf-deserialize-swf-loads">
+<h3>swf.deserialize / swf.loads<a class="headerlink" href="#swf-deserialize-swf-loads" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">()</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&lt;tomato.swf_processor.Swf object at 0x1b19f0&gt;</span>
+</pre></div>
+</div>
+<p>シリアライズされた SWF オブジェクトをデシリアライズします。</p>
+<p><tt class="docutils literal"><span class="pre">swf.loads</span></tt> メソッドでも同じ処理を行うことができます。</p>
+<p><tt class="docutils literal"><span class="pre">Swf(open('tomato/sample/mc/tank.swf').read())</span></tt> で直接 SWF ファイルを読み込むよりも、
+<tt class="docutils literal"><span class="pre">Swf().loads(open('tomato/sample/mc/tank.p').read())</span></tt> で swf オブジェクトを
+生成する方が高速に処理できます。</p>
+</div>
+<div class="section" id="msgpack-unpacker">
+<h3>msgpack.Unpacker を用いた高速化<a class="headerlink" href="#msgpack-unpacker" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>頻繁にデシリアライズを行う場合は、 <tt class="docutils literal"><span class="pre">msgpack-python</span></tt> の機能である
+<tt class="docutils literal"><span class="pre">Unpacker</span></tt> を用いることで、デシリアライズの高速化を行うことができます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">msgpack</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">U</span> <span class="o">=</span> <span class="n">msgpack</span><span class="o">.</span><span class="n">Unpacker</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Swf</span><span class="p">()</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">U</span><span class="p">)</span>
+<span class="go">&lt;tomato.swf_processor.Swf object at 0x1b1a20&gt;</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">deserialize</span></tt> / <tt class="docutils literal"><span class="pre">loads</span></tt> メソッドの二つ目の引数に <tt class="docutils literal"><span class="pre">Unpacker</span></tt> オブジェクトを指定します。</p>
+</div>
 </div>
 </div>
 
@@ -255,7 +299,12 @@ Django 等でレスポンス返却する際に用います。</p>
 <li><a class="reference internal" href="#mc-set-translate">mc.set_translate</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id2">シリアライズ機能</a></li>
+<li><a class="reference internal" href="#id2">シリアライズ機能</a><ul>
+<li><a class="reference internal" href="#swf-serialize-swf-dumps">swf.serialize / swf.dumps</a></li>
+<li><a class="reference internal" href="#swf-deserialize-swf-loads">swf.deserialize / swf.loads</a></li>
+<li><a class="reference internal" href="#msgpack-unpacker">msgpack.Unpacker を用いた高速化</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -236,7 +236,67 @@ mc.set_translate
 MovieClip の位置変更を行います。ピクセル単位で指定します。
 
 
+
 シリアライズ機能
 -----------------
 
-まだ途中！
+Tomato の処理の中で重いものの一つが SWF ファイルのパースです。
+
+生成した Swf オブジェクトをシリアライズし利用することで、
+SWF ファイルの読み込み（パース処理）時間を削減することができます。
+
+
+swf.serialize / swf.dumps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    >>> from tomato import Swf
+    >>> s = Swf(open('tomato/sample/mc/tank.swf').read())
+    >>> s.serialize()
+    '\x85\xb2serializer_version\xa4MCV1\xa6blocks\xdc\x007...
+
+    >>> s.serialize(open('tomato/sample/mc/tank.p', 'w'))
+
+SWF オブジェクトをシリアライズします。
+
+引数を指定しなければ、バイナリ列が出力されます。
+引数にファイルオブジェクトを指定すると、ファイルに書き出されます。
+
+``swf.dumps`` メソッドでも同じ処理を行うことができます。
+
+
+swf.deserialize / swf.loads
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    >>> from tomato import Swf
+    >>> s = Swf().deserialize(open('tomato/sample/mc/tank.p').read())
+    >>> s
+    <tomato.swf_processor.Swf object at 0x1b19f0>
+
+シリアライズされた SWF オブジェクトをデシリアライズします。
+
+``swf.loads`` メソッドでも同じ処理を行うことができます。
+
+``Swf(open('tomato/sample/mc/tank.swf').read())`` で直接 SWF ファイルを読み込むよりも、
+``Swf().loads(open('tomato/sample/mc/tank.p').read())`` で swf オブジェクトを
+生成する方が高速に処理できます。
+
+
+msgpack.Unpacker を用いた高速化
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+頻繁にデシリアライズを行う場合は、 ``msgpack-python`` の機能である
+``Unpacker`` を用いることで、デシリアライズの高速化を行うことができます。
+
+.. code-block:: python
+
+    >>> import msgpack
+    >>> from tomato import Swf
+    >>> U = msgpack.Unpacker()
+    >>> Swf().loads(open('tomato/sample/mc/tank.p').read(), U)
+    <tomato.swf_processor.Swf object at 0x1b1a20>
+
+``deserialize`` / ``loads`` メソッドの二つ目の引数に ``Unpacker`` オブジェクトを指定します。
