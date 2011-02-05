@@ -52,68 +52,68 @@
 <h1>Tomato API<a class="headerlink" href="#tomato-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Tomato API を用いることで、チュートリアルで紹介した他にも
 いろいろな操作を SWF に対して行うことができるようになります。</p>
-<div class="section" id="id1">
-<h2>メソッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="swf">
-<h3>SWF の読み込み<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>Swf オブジェクトのメソッド<a class="headerlink" href="#swf" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Swf オブジェクトのメソッド一覧です。</p>
+<div class="section" id="id1">
+<h3>swf<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tomato</span> <span class="kn">import</span> <span class="n">Swf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
+<p>SWF ファイルを読み込み、Swf オブジェクトを生成します。</p>
 </div>
-<div class="section" id="id2">
-<h3>SWF の画面サイズ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-size">
+<h3>swf.size<a class="headerlink" href="#swf-size" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">size</span>
 <span class="go">(240, 266)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">width</span>
-<span class="go">240</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">height</span>
-<span class="go">266</span>
 </pre></div>
 </div>
-<p>SWF の画面サイズがピクセル単位で出力されます。</p>
+<p><tt class="docutils literal"><span class="pre">swf.size</span></tt> で SWF の縦、横のサイズを取得することができます。
+ピクセル単位で出力されます。</p>
 </div>
-<div class="section" id="id3">
-<h3>SWF オブジェクトのコピー<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-copy">
+<h3>swf.copy<a class="headerlink" href="#swf-copy" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="go">&lt;tomato.swf_processor.Swf object at 0x51e330&gt;</span>
 </pre></div>
 </div>
-<p>SWF オブジェクトの deepcopy を作成します。</p>
-<p>python の copy モジュールの deepcopy 関数よりも
-8 倍程度高速にコピーを生成することができます。</p>
+<p><tt class="docutils literal"><span class="pre">copy</span></tt> メソッドはSWF オブジェクトの deep copy を作成します。</p>
+<p>python の <a class="reference external" href="http://docs.python.org/library/copy.html">copy モジュール</a> の
+<tt class="docutils literal"><span class="pre">deepcopy</span></tt> メソッドよりも 8 倍程度高速にコピーを生成することができます。</p>
 <p>Global 変数に置き換え元の SWF を宣言し、MovieClip
 の置き換えを行う際に <tt class="docutils literal"><span class="pre">copy()</span></tt> したものを用いる事で、
-SWF ファイルを読み込んでパースを行うコストを抑えることができます。</p>
+SWF ファイルを読み込みパースを行う際のコストを抑えることができます。</p>
 </div>
-<div class="section" id="swf-movieclip">
-<h3>SWF 内 MovieClip 名の取得<a class="headerlink" href="#swf-movieclip" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-get-movie-clip-name">
+<h3>swf.get_movie_clip_name<a class="headerlink" href="#swf-get-movie-clip-name" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">get_movie_clip_name</span><span class="p">()</span>
 <span class="go">[&#39;kombu&#39;, &#39;fish1&#39;, &#39;fish2&#39;]</span>
 </pre></div>
 </div>
+<p><tt class="docutils literal"><span class="pre">get_movie_clip_name</span></tt> メソッドで Swf 内の MovieClip を取得することができます。</p>
 </div>
-<div class="section" id="movieclip">
-<h3>MovieClip オブジェクトの取得<a class="headerlink" href="#movieclip" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-get-movie-clip">
+<h3>swf.get_movie_clip<a class="headerlink" href="#swf-get-movie-clip" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">get_movie_clip</span><span class="p">(</span><span class="s">&#39;kombu&#39;</span><span class="p">)</span>
 <span class="go">&lt;tomato.structure.MovieClip object at 0x5102d0&gt;</span>
 </pre></div>
 </div>
+<p><tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> メソッドで SWF 内の MovieClip から MovieClip オブジェクトを生成します。</p>
 </div>
-<div class="section" id="id4">
-<h3>入れ子関係を用いた MovieClip の取得<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-get-movie-clip-from-parent">
+<h3>swf.get_movie_clip_from_parent<a class="headerlink" href="#swf-get-movie-clip-from-parent" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">tomato/sample/mc/fish_red_fin.swf</span></tt> は金魚の MovieClip (<tt class="docutils literal"><span class="pre">red</span></tt>)
 の内部にヒレの MovieClip (<tt class="docutils literal"><span class="pre">fin</span></tt>) があります。</p>
 <p>このように入れ子構造の MovieClip を取得したい場合は
-<tt class="docutils literal"><span class="pre">get_movie_clip_from_parent</span></tt> 関数を用います。</p>
+<tt class="docutils literal"><span class="pre">get_movie_clip_from_parent</span></tt> メソッドを用います。</p>
 <embed src="swf/fish_red_hire.swf" embed src="example.swf" type="application/x-shockwave-flash" width="240" height="266" />
 <img src="img/tomato_fin.png" /><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/fish_red_fin.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">get_movie_clip_from_parent</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;fin&#39;</span><span class="p">)</span>
 <span class="go">&lt;tomato.structure.MovieClip object at 0x1b7570&gt;</span>
 </pre></div>
 </div>
-<hr class="docutils" />
-<p><tt class="docutils literal"><span class="pre">fin</span></tt> という名前の MovieClip が一つしかない場合は <tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> 関数でも
+<p><tt class="docutils literal"><span class="pre">fin</span></tt> という名前の MovieClip が一つしかない場合は <tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> メソッドでも
 問題なく取得することができますが、</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">fish1</span></tt> MovieClip の中の <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip</li>
@@ -121,32 +121,107 @@ SWF ファイルを読み込んでパースを行うコストを抑えること�
 <li><tt class="docutils literal"><span class="pre">fish3</span></tt> MovieClip の中の <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip</li>
 <li>...</li>
 </ul>
-<p>といったような構造の場合、 <tt class="docutils literal"><span class="pre">get_movie_clip</span></tt> 関数だと SWF の中で最初に
-発見された <tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip を取得しようとしてうまくいきません。
-このような場合に <tt class="docutils literal"><span class="pre">get_movie_clip_from_parent</span></tt>
-関数を用いるとうまく処理を行うことができます。</p>
+<p>といったような構造の場合、SWF の中で最初に発見された
+<tt class="docutils literal"><span class="pre">fin</span></tt> MovieClip を取得しようとしてうまくいきません。</p>
+<p>このような場合に <tt class="docutils literal"><span class="pre">get_movie_clip_from_parent</span></tt> メソッドを
+用いるとうまく処理を行うことができます。</p>
 </div>
-<div class="section" id="id5">
-<h3>画面から MovieClip の削除<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-delete-movie-clip">
+<h3>swf.delete_movie_clip<a class="headerlink" href="#swf-delete-movie-clip" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">delete_movie_clip</span><span class="p">(</span><span class="s">&#39;kombu&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/tank_without_kombu.swf&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
 </div>
-<div class="section" id="id6">
-<h3>MovieClip の置き換え<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">delete_movie_clip</span></tt> メソッドで MovieClip を画面上に表示しないようにすることができます。</p>
+<p>引数に MovieClip の名前、もしくは MovieClip オブジェクトを指定します。</p>
+<p>ただし、MovieClip で用いられていたベクターデータや画像データ等は残ったままです。</p>
 </div>
-<div class="section" id="id7">
-<h3>MovieClip のサイズ変更<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-replace-movie-clip">
+<h3>swf.replace_movie_clip<a class="headerlink" href="#swf-replace-movie-clip" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">red_swf</span> <span class="o">=</span> <span class="n">Swf</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/fish_red.swf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">red_mc</span> <span class="o">=</span> <span class="n">red_swf</span><span class="o">.</span><span class="n">get_movie_clip</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span> <span class="o">=</span> <span class="n">tank_swf</span><span class="o">.</span><span class="n">replace_movie_clip</span><span class="p">(</span><span class="s">&#39;fish1&#39;</span><span class="p">,</span> <span class="n">red_mc</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="id8">
-<h3>MovieClip のレイヤー深度の変更<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">replace_movie_clip</span></tt> メソッドを用いて、MovieClip の置き換えを行います。</p>
+<p>元々 <tt class="docutils literal"><span class="pre">red_swf</span></tt> 内にあった <tt class="docutils literal"><span class="pre">red_mc</span></tt> が <tt class="docutils literal"><span class="pre">tank_swf</span></tt> 内にコピーされ、新しい MovieClip
+<tt class="docutils literal"><span class="pre">ret_mc</span></tt> が返されます。この <tt class="docutils literal"><span class="pre">ret_mc</span></tt> に対してメソッドを呼ぶことで
+置き換えた MovieClip の位置やサイズを変更することができます。</p>
 </div>
-<div class="section" id="id9">
-<h3>MovieClip の位置変更<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="swf-write">
+<h3>swf.write<a class="headerlink" href="#swf-write" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+<span class="go">&#39;FWS\x04\x83\x06\x00\x00p\x00\t`\x00\x00\xa6...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tank_swf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;tomato/sample/mc/out2.swf&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
 </div>
-<div class="section" id="id10">
-<h3>SWF の書き出し<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">write</span></tt> メソッドで加工した SWF バイナリを出力します。</p>
+<p>引数に何も指定しなければそのままバイナリが出力されます。
+Django 等でレスポンス返却する際に用います。</p>
+<p>引数にファイルオブジェクトを指定すると加工した SWF が書き出されます。</p>
 </div>
 </div>
-<div class="section" id="id11">
-<h2>シリアライズ機能<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="movieclip">
+<h2>MovieClip オブジェクトのメソッド<a class="headerlink" href="#movieclip" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>MovieClip オブジェクトのメソッド一覧です。</p>
+<div class="section" id="mc-scale">
+<h3>mc.scale<a class="headerlink" href="#mc-scale" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">scale</span>
+<span class="go">(0.5, 0.5)</span>
+</pre></div>
+</div>
+<p>MovieClip のサイズの縦と横の拡大値を取得します。1 が元の大きさになります。</p>
+<p>指定されていなければ <tt class="xref docutils literal"><span class="pre">None</span></tt> が返されます。</p>
+</div>
+<div class="section" id="mc-set-scale">
+<h3>mc.set_scale<a class="headerlink" href="#mc-set-scale" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">set_scale</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>MovieClip のサイズ変更を行います。縦と横の拡大値で指定します。</p>
+</div>
+<div class="section" id="mc-depth">
+<h3>mc.depth<a class="headerlink" href="#mc-depth" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">depth</span>
+<span class="go">109</span>
+</pre></div>
+</div>
+<p>MovieClip のレイヤー深度を取得します。</p>
+<p>レイヤー深度とは MovieClip の画面への表示順で 65535 以下の正の整数で指定します。
+数値を大きく設定すれば MovieClip は手前に表示され、小さく設定すれば後方に表示されます。</p>
+</div>
+<div class="section" id="mc-set-depth">
+<h3>mc.set_depth<a class="headerlink" href="#mc-set-depth" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">set_depth</span><span class="p">(</span><span class="mi">130</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>MovieClip のレイヤー深度の変更を行います。</p>
+<p>ただし、 MovieClip を削除する ActionScript を記述する際に
+レイヤー深度によって削除する MovieClip を指定するため、レイヤー深度を
+変更するのはあまり望ましくありません。</p>
+</div>
+<div class="section" id="mc-translate">
+<h3>mc.translate<a class="headerlink" href="#mc-translate" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">translate</span>
+<span class="go">(158.19999999999999, 43.549999999999997)</span>
+</pre></div>
+</div>
+<p>MovieClip の位置を取得します。ピクセル単位で x 座標, y 座標が返されます。</p>
+</div>
+<div class="section" id="mc-set-translate">
+<h3>mc.set_translate<a class="headerlink" href="#mc-set-translate" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">set_translate</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret_mc</span><span class="o">.</span><span class="n">translate</span>
+<span class="go">(100.0, 60.0)</span>
+</pre></div>
+</div>
+<p>MovieClip の位置変更を行います。ピクセル単位で指定します。</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>シリアライズ機能<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>まだ途中！</p>
 </div>
 </div>
 
@@ -159,22 +234,28 @@ SWF ファイルを読み込んでパースを行うコストを抑えること�
   <h3><a href="index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Tomato API</a><ul>
-<li><a class="reference internal" href="#id1">メソッド</a><ul>
-<li><a class="reference internal" href="#swf">SWF の読み込み</a></li>
-<li><a class="reference internal" href="#id2">SWF の画面サイズ</a></li>
-<li><a class="reference internal" href="#id3">SWF オブジェクトのコピー</a></li>
-<li><a class="reference internal" href="#swf-movieclip">SWF 内 MovieClip 名の取得</a></li>
-<li><a class="reference internal" href="#movieclip">MovieClip オブジェクトの取得</a></li>
-<li><a class="reference internal" href="#id4">入れ子関係を用いた MovieClip の取得</a></li>
-<li><a class="reference internal" href="#id5">画面から MovieClip の削除</a></li>
-<li><a class="reference internal" href="#id6">MovieClip の置き換え</a></li>
-<li><a class="reference internal" href="#id7">MovieClip のサイズ変更</a></li>
-<li><a class="reference internal" href="#id8">MovieClip のレイヤー深度の変更</a></li>
-<li><a class="reference internal" href="#id9">MovieClip の位置変更</a></li>
-<li><a class="reference internal" href="#id10">SWF の書き出し</a></li>
+<li><a class="reference internal" href="#swf">Swf オブジェクトのメソッド</a><ul>
+<li><a class="reference internal" href="#id1">swf</a></li>
+<li><a class="reference internal" href="#swf-size">swf.size</a></li>
+<li><a class="reference internal" href="#swf-copy">swf.copy</a></li>
+<li><a class="reference internal" href="#swf-get-movie-clip-name">swf.get_movie_clip_name</a></li>
+<li><a class="reference internal" href="#swf-get-movie-clip">swf.get_movie_clip</a></li>
+<li><a class="reference internal" href="#swf-get-movie-clip-from-parent">swf.get_movie_clip_from_parent</a></li>
+<li><a class="reference internal" href="#swf-delete-movie-clip">swf.delete_movie_clip</a></li>
+<li><a class="reference internal" href="#swf-replace-movie-clip">swf.replace_movie_clip</a></li>
+<li><a class="reference internal" href="#swf-write">swf.write</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11">シリアライズ機能</a></li>
+<li><a class="reference internal" href="#movieclip">MovieClip オブジェクトのメソッド</a><ul>
+<li><a class="reference internal" href="#mc-scale">mc.scale</a></li>
+<li><a class="reference internal" href="#mc-set-scale">mc.set_scale</a></li>
+<li><a class="reference internal" href="#mc-depth">mc.depth</a></li>
+<li><a class="reference internal" href="#mc-set-depth">mc.set_depth</a></li>
+<li><a class="reference internal" href="#mc-translate">mc.translate</a></li>
+<li><a class="reference internal" href="#mc-set-translate">mc.set_translate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">シリアライズ機能</a></li>
 </ul>
 </li>
 </ul>

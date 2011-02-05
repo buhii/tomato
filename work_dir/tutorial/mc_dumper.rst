@@ -15,14 +15,14 @@ swf_mc_dumper.py
     usage: python swf_mc_dumper.py [input.swf] [output directory] [limit_depth]
 
 
-**[input.swf]**
+``[input.swf]``
     MovieClip を抽出したい SWF を指定します。
 
-**[output directory]**
+``[output directory]``
     抽出し変換した SWF を出力したいディレクトリを指定します。
 
-**[limit_depth]**
-    MovieClip の入れ子数の上限を指定します。limit_depth 以上の入れ子数を
+``[limit_depth]``
+    MovieClip の入れ子数の上限を指定します。 ``limit_depth`` 以上の入れ子数を
     検出するとエラーを出力します。
     指定しない場合、デフォルト値 3 が使用されます。
 

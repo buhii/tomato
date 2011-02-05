@@ -13,11 +13,11 @@ swf_checker.py
     $ python swf_checker.py
     usage: python swf_checker.py [input.swf] [limit_depth]
 
-**[input.swf]**
+``[input.swf]``
     MovieClip 入れ子数を調査したい SWF を指定します。
 
-**[limit_depth]**
-    MovieClip の入れ子数の上限を指定します。limit_depth 以上の入れ子数を
+``[limit_depth]``
+    MovieClip の入れ子数の上限を指定します。 ``limit_depth`` 以上の入れ子数を
     検出するとエラーを出力します。
     指定しない場合、デフォルト値 3 が使用されます。
 
