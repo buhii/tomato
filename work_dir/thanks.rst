@@ -2,12 +2,12 @@
 サポート
 =========
 
-tomato-python
---------------
+メーリングリスト
+-----------------
 
-現在、鎌谷崇広 < buhii314 _at_ gmail.com > がメンテナンスを行っています。
+現在、Tomato は鎌谷崇広 < buhii314 _at_ gmail.com > がメンテナンスを行っています。
 
-`tomato-python <http://groups.google.com/group/tomato_python>`_ を Google Groups に開設いたしました。ぜひご活用頂ければと思います。
+メーリングリストである `tomato-python <http://groups.google.com/group/tomato_python>`_ を Google Groups に開設いたしました。ぜひご活用頂ければと思います。
 
 
 謝辞
