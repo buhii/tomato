@@ -371,7 +371,7 @@ class MovieClip(object):
 
     @property
     def translate(self):
-        return map(twip2pixel, self._translate)
+        return tuple(map(twip2pixel, self._translate))
     
     def set_translate(self, translate_x, translate_y):
         self._translate = pixel2twip(translate_x), pixel2twip(translate_y)
