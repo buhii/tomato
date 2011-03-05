@@ -35,7 +35,7 @@ import zlib
 from cStringIO import StringIO
 from PIL import Image
 from math import ceil
-from utils import _h32, _h16, le2byte, le4byte
+from tomato.utils import _h32, _h16, le2byte, le4byte
 
 
 DEBUG = False

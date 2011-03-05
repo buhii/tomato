@@ -29,7 +29,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 import sys
-from swf_processor import Swf
+from tomato.swf_processor import Swf
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:

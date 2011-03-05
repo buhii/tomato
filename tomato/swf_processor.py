@@ -35,13 +35,13 @@ import msgpack
 
 from collections import defaultdict
 
-from utils import _h32, _h16, le2byte, le4byte, get_fixed_point_number, \
+from tomato.utils import _h32, _h16, le2byte, le4byte, get_fixed_point_number, \
      Bits, s2b, b2i, flatten_defaultdict_set, \
      RECT, MATRIX, SERIALIZER_MOVIECLIP_V1 as MOVIECLIP_V1
-from parser import SwfBlockParser, deserialize_blocks
-from structure import StreamIO, DefinitionTag, PlaceObject2, DefineSprite, MovieClip
-from exceptions_tomato import MovieClipDoesNotExist, is_valid_swf
-from swf_injector import create_swf
+from tomato.parser import SwfBlockParser, deserialize_blocks
+from tomato.structure import StreamIO, DefinitionTag, PlaceObject2, DefineSprite, MovieClip
+from tomato.exceptions_tomato import MovieClipDoesNotExist, is_valid_swf
+from tomato.swf_injector import create_swf
 
 
 DEBUG = False

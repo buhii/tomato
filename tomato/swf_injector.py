@@ -31,7 +31,7 @@ import struct
 import sys
 import zlib
 
-from utils import _h32, _h16
+from tomato.utils import _h32, _h16
 
 def _calctaglen(d, encode_option):
     num = 0
