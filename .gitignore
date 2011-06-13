@@ -11,3 +11,7 @@ Thumbs.db
 #*
 \#*
 .#*
+build
+dist
+tomato.egg-info
+sample/mc/*

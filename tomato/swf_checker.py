@@ -30,7 +30,7 @@ THE SOFTWARE.
 
 import sys
 import os
-from swf_processor import Swf
+from tomato.swf_processor import Swf
 from structure import PlaceObject2, DefineSprite
 
 class SwfDepthChecker(object):

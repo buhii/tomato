@@ -30,7 +30,7 @@ import struct
 from bitarray import bitarray
 from array import array
 from math import ceil
-from exceptions_tomato import BitsError, NegativeIntError, AlignError
+from tomato.exceptions_tomato import BitsError, NegativeIntError, AlignError
 
 # serializer version
 SERIALIZER_MOVIECLIP_V1 = 'MCV1'
