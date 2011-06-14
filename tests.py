@@ -9,9 +9,9 @@ import time
 
 from PIL import Image
 
-from swf_processor import Swf
-from exceptions_tomato import MovieClipDoesNotExist
-from utils import bits_list2string, Bits, SignedBits as SB, FixedPointBits as FB, MATRIX
+from tomato.swf_processor import Swf
+from tomato.exceptions_tomato import MovieClipDoesNotExist
+from tomato.utils import bits_list2string, Bits, SignedBits as SB, FixedPointBits as FB, MATRIX
 
 
 def test_matrix(scale=None, rotate=None, translate=(0,0)):

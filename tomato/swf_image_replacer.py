@@ -35,7 +35,7 @@ from cStringIO import StringIO
 from PIL import Image
 from math import ceil
 from utils import _h32, _h16, le2byte, le4byte
-from exceptions_tomato import is_valid_swf
+from tomato.exceptions_tomato import is_valid_swf
 
 
 DEBUG = False

@@ -32,12 +32,12 @@ import parser
 
 from bitarray import bitarray
 from collections import defaultdict
-from utils import _h32, _h16, le2byte, le4byte, \
+from tomato.utils import _h32, _h16, le2byte, le4byte, \
      flatten_defaultdict_set, \
      Bits, SignedBits as SB, s2b, b2i, _oct, \
      MATRIX, CXFORMWITHALPHA, RECT, \
      SERIALIZER_MOVIECLIP_V1 as MOVIECLIP_V1
-from exceptions_tomato import *
+from tomato.exceptions_tomato import *
 
 
 DEBUG = False

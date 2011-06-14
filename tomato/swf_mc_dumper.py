@@ -28,8 +28,8 @@ THE SOFTWARE.
 """
 import sys
 import os
-from swf_processor import Swf
-from swf_checker import SwfDepthChecker
+from tomato.swf_processor import Swf
+from tomato.swf_checker import SwfDepthChecker
 
 def mc2swf(in_swf_filename, out_dir, limit_depth):
     print "parsing %s ..." % in_swf_filename
