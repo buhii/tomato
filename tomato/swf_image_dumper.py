@@ -33,9 +33,13 @@ import sys
 import struct
 import zlib
 from cStringIO import StringIO
-from PIL import Image
 from math import ceil
 from tomato.utils import _h32, _h16, le2byte, le4byte
+
+try:
+    from PIL import Image
+except ImportError:
+    import Image
 
 
 DEBUG = False

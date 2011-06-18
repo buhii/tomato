@@ -7,7 +7,10 @@ import unittest
 import msgpack
 import time
 
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:
+    import Image
 
 from tomato.swf_processor import Swf
 from tomato.exceptions_tomato import MovieClipDoesNotExist
