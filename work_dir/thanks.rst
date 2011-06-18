@@ -27,3 +27,5 @@ Tomato の開発にご協力頂いた gumi エンジニアの皆様に深く感�
 を開発され、Tomato への同梱をご快諾頂きました。ここに深く感謝いたします。
 
 SWF バイナリ編集について豊富な資料を公開されている `よやさん <http://pwiki.awm.jp/~yoya/?Flash/SWF>`_ に深く感謝いたします。
+
+Python Egg 化パッチを提供して頂いた Yamashita Yuu さんに深く感謝いたします。

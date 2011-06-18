@@ -14,7 +14,7 @@ Tomato は SWF の加工・解析を行うために開発された Python モジ
    :maxdepth: 2
 
    feature
-   download
+   install
    tutorial
    api
    thanks
