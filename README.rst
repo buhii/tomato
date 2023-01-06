@@ -19,7 +19,7 @@ http://github.com/buhii/tomato
 
 Documentation(Japanese)
 =======================
-http://buhii.github.com/tomato/
+https://buhii.github.io/tomato/
 
 
 Changelog
