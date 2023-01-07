@@ -6,7 +6,7 @@ Tomato
 
 Requirements
 ============
-* Python 2.6 or greater
+* Python 2.6 or greater (currently, only Python 2 supported)
 * PIL 1.1.7 or greater
 * bitarray 0.3.5 or greater
 * msgpack 0.1.8 or greater
