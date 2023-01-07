@@ -31,7 +31,7 @@ pip コマンドよりインストールを行うこともできます。
 
 .. code-block:: none
 
-    $ pip install tomato
+    $ pip install git+https://github.com/buhii/tomato.git
 
 
 GitHub
